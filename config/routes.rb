@@ -5,4 +5,5 @@ Rails.application.routes.draw do
       patch :mark_as_done
     end
   end
+  root "tasks#index"
 end

@@ -7,7 +7,6 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
-    @tags = Tag.all
   end
 
   def create
@@ -21,7 +20,7 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @tags = Tag.all
+   
   end
 
   def update

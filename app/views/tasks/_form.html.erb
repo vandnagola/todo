@@ -1,47 +1,53 @@
-<%= form_with(model: task) do |form| %>
-  <% if task.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <%= form_with(model: @task, class: "shadow p-3 mb-5 bg-info rounded", local: true) do |f| %>
 
-      <ul>
-        <% task.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <div class="form-group row mb-3 justify-content-center">
+          <%= f.label :Task, class: "col-2 col-form-label text-black" %>
+          <div class="col-10">
+            <%= f.text_field :title, class: "form-control shadow rounded", placeholder: "Task Title" %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-3 justify-content-center">
+          <%= f.label :due_date, class: "col-2 col-form-label text-black" %>
+          <div class="col-10">
+            <%= f.date_select :due_date, class: "form-select shadow rounded" %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-3 justify-content-center">
+          <%= f.label :priority, class: "col-2 col-form-label text-black" %>
+          <div class="col-10">
+            <%= f.select :priority, ["low", "medium", "high"], {}, class: "form-control shadow rounded" %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-3 justify-content-center">
+          <%= f.label :progress, "Progress (%)", class: "col-2 col-form-label text-black" %>
+          <div class="col-10">
+            <%= f.number_field :progress, min: 0, max: 100, class: "form-control shadow rounded", placeholder: "Progress %" %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-3 justify-content-center">
+          <%= f.label :status, class: "col-2 col-form-label text-black" %>
+          <div class="col-10">
+            <%= f.select :status, ["pending", "completed"], {}, class: "form-select shadow rounded" %>
+          </div>
+        </div>
+
+        <div class="form-group row justify-content-center">
+          <div class="col-auto">
+            <%= f.submit "Save Task", class: "btn btn-outline-dark btn-m w-100" %>
+          </div>
+          <div class="col-auto">
+            <%= link_to "Back to tasks", tasks_path, class: "btn btn-secondary btn-m w-100" %>
+          </div>
+        </div>
+
+      <% end %>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
   </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :due_date, style: "display: block" %>
-    <%= form.datetime_field :due_date %>
-  </div>
-
-  <div>
-    <%= form.label :priority, style: "display: block" %>
-    <%= form.text_field :priority %>
-  </div>
-
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div>
-    <%= form.label :progress, style: "display: block" %>
-    <%= form.number_field :progress %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
