@@ -62,3 +62,6 @@ end
 gem 'bootstrap', '~> 5.3.2'
 gem 'jquery-rails'
 gem 'sass-rails'
+
+gem 'delayed_job_active_record'
+

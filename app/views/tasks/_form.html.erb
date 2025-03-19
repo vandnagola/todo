@@ -46,6 +46,7 @@
             <%= link_to "Back to tasks", tasks_path, class: "btn btn-secondary btn-m w-100" %>
           </div>
         </div>
+        <%= f.hidden_field :user_email, value: "guest@example.com" %>
 
       <% end %>
     </div>
