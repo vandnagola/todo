@@ -26,9 +26,9 @@
         </td>
         <td>
           <%= task.status %>
-            <% if task.status != "completed" %>
-              <%= button_to "Mark Done", mark_as_done_task_path(task), method: :patch, class: "btn btn-success btn-sm" %>
-            <% end %>
+          <% if task.status != "completed" %>
+            <%= button_to "Mark Done", mark_as_done_task_path(task), method: :patch, class: "btn btn-success btn-sm" %>
+          <% end %>
         </td>
         <td>
           <%= link_to 'Edit', edit_task_path(task), class: "btn btn-sm btn-warning" %>

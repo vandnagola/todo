@@ -12,7 +12,6 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      @task.tags << Tag.where(id: params[:task][:tag_ids]) if params[:task][:tag_ids]
       redirect_to tasks_path, notice: 'Task created successfully!'
     else
       render :new
@@ -25,7 +24,6 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      @task.tags = Tag.where(id: params[:task][:tag_ids]) if params[:task][:tag_ids]
       redirect_to tasks_path, notice: 'Task updated successfully!'
     else
       render :edit
